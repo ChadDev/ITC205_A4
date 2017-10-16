@@ -1,3 +1,4 @@
+package main;
 import java.util.List;
 import java.io.*;
 
@@ -18,13 +19,13 @@ public class Main {
         int totalWins = 0;
         int totalLosses = 0;
 
-        while (true)
-        {
+        while (true){
             int winCount = 0;
             int loseCount = 0;
             
-            for (int i = 0; i < 100; i++)
-            {
+            DiceValue pick = DiceValue.getRandom();
+            
+            for (int i = 0; i < 1000; i++){
             	String name = "Fred";
             	int balance = 100;
             	int limit = 0;
@@ -37,13 +38,14 @@ public class Main {
                 		player.getName(), player.getBalance(), player.getLimit()));
 
                 int turn = 0;
-                while (player.balanceExceedsLimitBy(bet) && player.getBalance() < 200)
-                {
+                while (player.balanceExceedsLimitBy(bet) && player.getBalance() < 2*balance){
                     turn++;                    
-                	DiceValue pick = DiceValue.getRandom();
+                	
                    
                 	System.out.printf("Turn %d: %s bet %d on %s\n",
                 			turn, player.getName(), bet, pick); 
+                	
+                	
                 	
                 	int winnings = game.playRound(player, pick, bet);
                     cdv = game.getDiceValues();
@@ -55,8 +57,7 @@ public class Main {
 	                    System.out.printf("%s won %d, balance now %d\n\n",
 	                    		player.getName(), winnings, player.getBalance());
 	                	winCount++; 
-                    }
-                    else {
+                    }else{
 	                    System.out.printf("%s lost, balance now %d\n\n",
 	                    		player.getName(), player.getBalance());
 	                	loseCount++;

@@ -1,3 +1,4 @@
+package main;
 
 public class Player {
 	private String name;
@@ -23,11 +24,11 @@ public class Player {
 	}
 
 	public boolean balanceExceedsLimit() {
-		return (balance > limit);
+		return (balance >= limit); //replaces > with >= to replace bug
 	}
 	
 	public boolean balanceExceedsLimitBy(int amount) {
-		return (balance - amount > limit);
+		return (balance - amount >= limit); //replaces > with >= to replace bug
 	}
 	
 	public void takeBet(int bet) {

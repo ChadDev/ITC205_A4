@@ -1,9 +1,10 @@
+package main;
 public class Dice {
 			
 	private DiceValue value;
 	
 	public Dice() {
-		value =  DiceValue.getRandom();
+		roll();
 	}
 	
 	public DiceValue getValue() {
@@ -11,7 +12,8 @@ public class Dice {
 	}
 
 	public DiceValue roll() {
-		return DiceValue.getRandom();
+		value = DiceValue.getRandom();
+		return getValue();
 	}		
 	
 	public String toString() {
